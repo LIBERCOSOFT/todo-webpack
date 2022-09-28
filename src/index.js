@@ -1,45 +1,22 @@
+import Action from './modules/tasks.js';
 import './style.css';
 
-const toDoItems = [
-  {
-    description: 'first item description',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'second item description',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'third item description',
-    completed: true,
-    index: 3,
-  },
-  {
-    description: 'fouth item description',
-    completed: false,
-    index: 4,
-  },
-  {
-    description: 'fifth item description',
-    completed: true,
-    index: 5,
-  },
-];
+// Display list of todo items in localstorage
+Action.displaySavedItems();
 
-toDoItems.forEach((val) => {
-  const itemsContainer = document.querySelector('#items__container');
-  const liElement = document.createElement('li');
-  liElement.id = val.index;
-  liElement.className = 'space__between';
-  liElement.innerHTML = `
-  <div class="items__desc">
-  <input type="checkbox" />
-  <span>${val.description}</span>
-  </div>
-  <i class="fa-solid fa-ellipsis-vertical" </i>
-  `;
+const enterInput = document.querySelector('#user__input__btn');
+enterInput.addEventListener('click', () => {
+  const inputFieldValue = document.querySelector('#user__input__field').value;
+  if (inputFieldValue) {
+    const allTodos = JSON.parse(localStorage.getItem('allTodos'));
+    const itemObj = {
+      description: inputFieldValue,
+      completed: false,
+      index: allTodos.length + 1,
+    };
 
-  itemsContainer.appendChild(liElement);
+    Action.addItemToDom(itemObj);
+    const updatedTodos = [...allTodos, itemObj];
+    localStorage.setItem('allTodos', JSON.stringify(updatedTodos));
+  }
 });
