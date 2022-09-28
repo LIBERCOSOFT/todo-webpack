@@ -28,14 +28,18 @@ const toDoItems = [
   },
 ];
 
-toDoItems.map (val => {
-  const itemsContainer = document.querySelector ('#items__container');
-  let liElement = document.createElement ('li');
+toDoItems.forEach((val) => {
+  const itemsContainer = document.querySelector('#items__container');
+  const liElement = document.createElement('li');
   liElement.id = val.index;
+  liElement.className = 'space__between';
   liElement.innerHTML = `
+  <div>
   <input type="checkbox" />
   ${val.description}
+  </div>
+  <i class="fa-solid fa-ellipsis-vertical" </i>
   `;
 
-  itemsContainer.appendChild (liElement);
+  itemsContainer.appendChild(liElement);
 });

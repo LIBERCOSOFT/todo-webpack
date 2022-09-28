@@ -4,12 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
+    <script
+      src="https://kit.fontawesome.com/97bb250fba.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <main>
       <section class="display__list">
-        <header><h3>Today's To Do</h3></header>
-        <ul id="items__container"></ul>
+        <div class="display__list__container">
+          <header class="space__between">
+            <h3>Today's To Do</h3>
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </header>
+
+          <div class="space__between">
+            <input type="text" placeholder="Add to your list..." />
+            <i class="fa-solid fa-arrow-left-long"></i>
+          </div>
+
+          <ul id="items__container"></ul>
+          <button type="button">Clear all completed</button>
+        </div>
       </section>
     </main>
   </body>
