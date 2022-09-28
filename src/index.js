@@ -34,9 +34,9 @@ toDoItems.forEach((val) => {
   liElement.id = val.index;
   liElement.className = 'space__between';
   liElement.innerHTML = `
-  <div>
+  <div class="items__desc">
   <input type="checkbox" />
-  ${val.description}
+  <span>${val.description}</span>
   </div>
   <i class="fa-solid fa-ellipsis-vertical" </i>
   `;
