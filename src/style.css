@@ -1,3 +1,9 @@
-body {
-    background-color: goldenrod;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#items__container li {
+    list-style: none;
 }
