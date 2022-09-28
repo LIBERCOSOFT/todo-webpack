@@ -11,6 +11,10 @@
   align-items: center;
 }
 
+.fa-solid {
+  font-size: 1.5em;
+}
+
 .display__list {
   height: 100vh;
   display: flex;
