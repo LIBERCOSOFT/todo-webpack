@@ -11,6 +11,7 @@ export default class Action {
     const spanElement = document.createElement('span');
     spanElement.id = `desc-${book.index}`;
     spanElement.innerText = book.description;
+    spanElement.addEventListener('blur', this.handleBlur);
     descDiv.appendChild(inputElement);
     descDiv.appendChild(spanElement);
     const kebab = document.createElement('i');
@@ -20,7 +21,8 @@ export default class Action {
     const trash = document.createElement('i');
     trash.className = 'fa-solid fa-trash hide';
     trash.id = `trash-${book.index}`;
-    trash.addEventListener('click', this.handleDelete);
+    // Used mousedown instead of click because it fires before blur event listner
+    trash.addEventListener('mousedown', this.handleDelete);
     liElement.appendChild(descDiv);
     liElement.appendChild(kebab);
     liElement.appendChild(trash);
@@ -53,10 +55,21 @@ export default class Action {
         allTodos.splice(i, 1);
       }
     });
-    for (let i = 1; i <= allTodos; i += 1) {
-      allTodos[i].index = i;
-    }
+    // for (let i = 1; i <= allTodos; i += 1) {
+    //   allTodos[i].index = i;
+    // }
     localStorage.setItem('allTodos', JSON.stringify(allTodos));
+  }
+
+  static handleBlur(e) {
+    const { parentElement } = e.target.parentElement;
+    const kebabIndex = document.querySelector(`#kebab-${parentElement.id}`);
+    const trashIndex = document.querySelector(`#trash-${parentElement.id}`);
+    const spanElement = document.querySelector(`#desc-${parentElement.id}`);
+    kebabIndex.classList.toggle('hide');
+    trashIndex.classList.toggle('hide');
+    spanElement.setAttribute('contenteditable', false);
+    parentElement.style.backgroundColor = '#fff';
   }
 
   static displaySavedItems() {

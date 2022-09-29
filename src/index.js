@@ -7,11 +7,12 @@ Action.displaySavedItems();
 const enterInput = document.querySelector('#user__input__btn');
 
 enterInput.addEventListener('click', () => {
-  const inputFieldValue = document.querySelector('#user__input__field').value;
-  if (inputFieldValue) {
+  const inputField = document.querySelector('#user__input__field');
+  const { value } = inputField;
+  if (value) {
     const allTodos = JSON.parse(localStorage.getItem('allTodos'));
     const itemObj = {
-      description: inputFieldValue,
+      description: value,
       completed: false,
       index: allTodos.length + 1,
     };
@@ -19,5 +20,7 @@ enterInput.addEventListener('click', () => {
     Action.addItemToDom(itemObj);
     const updatedTodos = [...allTodos, itemObj];
     localStorage.setItem('allTodos', JSON.stringify(updatedTodos));
+
+    inputField.value = '';
   }
 });
