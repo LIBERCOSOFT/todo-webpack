@@ -18,17 +18,19 @@
             <i class="fa-solid fa-arrows-rotate"></i>
           </header>
 
-          <div class="user__input space__between">
-            <input
-              type="text"
-              id="user__input__field"
-              placeholder="Add to your list..."
-            />
-            <i class="fa-solid fa-arrow-left-long" id="user__input__btn"></i>
-          </div>
+          <form>
+            <div class="user__input space__between">
+              <input
+                type="text"
+                id="user__input__field"
+                placeholder="Add to your list..."
+              />
+              <i class="fa-solid fa-arrow-left-long" id="user__input__btn"></i>
+            </div>
+          </form>
 
           <ul id="items__container"></ul>
-          <button type="button">Clear all completed</button>
+          <button type="button" id="clear__all">Clear all completed</button>
         </div>
       </section>
     </main>

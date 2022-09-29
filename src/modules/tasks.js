@@ -48,6 +48,8 @@ export default class Action {
     const { parentElement } = e.target;
     parentElement.remove();
 
+    window.location.reload();
+
     const { id } = e.target.parentElement;
     const allTodos = JSON.parse(localStorage.getItem('allTodos'));
     allTodos.forEach((todo, i) => {
@@ -55,9 +57,9 @@ export default class Action {
         allTodos.splice(i, 1);
       }
     });
-    // for (let i = 1; i <= allTodos; i += 1) {
-    //   allTodos[i].index = i;
-    // }
+    allTodos.forEach((val, i) => {
+      val.index = i + 1;
+    });
     localStorage.setItem('allTodos', JSON.stringify(allTodos));
   }
 
