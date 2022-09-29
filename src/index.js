@@ -5,6 +5,7 @@ import './style.css';
 Action.displaySavedItems();
 
 const enterInput = document.querySelector('#user__input__btn');
+
 enterInput.addEventListener('click', () => {
   const inputFieldValue = document.querySelector('#user__input__field').value;
   if (inputFieldValue) {

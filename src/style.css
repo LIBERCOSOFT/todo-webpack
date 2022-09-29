@@ -4,6 +4,14 @@
   padding: 0;
 }
 
+[contenteditable] {
+  outline: 0 solid transparent;
+}
+
+.hide {
+  display: none;
+}
+
 .space__between {
   display: flex;
   border-bottom: 0.15em solid #ccc;
