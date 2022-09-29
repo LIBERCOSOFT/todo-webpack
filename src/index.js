@@ -1,45 +1,43 @@
+import Action from './modules/tasks.js';
 import './style.css';
 
-const toDoItems = [
-  {
-    description: 'first item description',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'second item description',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'third item description',
-    completed: true,
-    index: 3,
-  },
-  {
-    description: 'fouth item description',
-    completed: false,
-    index: 4,
-  },
-  {
-    description: 'fifth item description',
-    completed: true,
-    index: 5,
-  },
-];
+// Display list of todo items in localstorage
+Action.displaySavedItems();
 
-toDoItems.forEach((val) => {
+const enterInput = document.querySelector('#user__input__btn');
+const enterField = document.querySelector('#user__input__field');
+const clearAll = document.querySelector('#clear__all');
+
+const addItemToDomOnEnter = () => {
+  const inputField = document.querySelector('#user__input__field');
+  const allTodos = JSON.parse(localStorage.getItem('allTodos')) || [];
+  const { value } = inputField;
+  if (value) {
+    const itemObj = {
+      description: value,
+      completed: false,
+      index: allTodos.length + 1,
+    };
+
+    Action.addItemToDom(itemObj);
+    const updatedTodos = [...allTodos, itemObj];
+    localStorage.setItem('allTodos', JSON.stringify(updatedTodos));
+
+    inputField.value = '';
+  }
+};
+
+enterInput.addEventListener('click', addItemToDomOnEnter);
+
+enterField.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    addItemToDomOnEnter();
+    event.preventDefault();
+  }
+});
+
+clearAll.addEventListener('click', () => {
   const itemsContainer = document.querySelector('#items__container');
-  const liElement = document.createElement('li');
-  liElement.id = val.index;
-  liElement.className = 'space__between';
-  liElement.innerHTML = `
-  <div class="items__desc">
-  <input type="checkbox" />
-  <span>${val.description}</span>
-  </div>
-  <i class="fa-solid fa-ellipsis-vertical" </i>
-  `;
-
-  itemsContainer.appendChild(liElement);
+  itemsContainer.innerHTML = '';
+  localStorage.removeItem('allTodos');
 });
