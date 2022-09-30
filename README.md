@@ -41,9 +41,9 @@ To get a local copy up and running follow these simple example steps.
 
 👤 **Kolapo Precious Akinrinlola**
 
-- GitHub: [@githubhandle](https://github.com/LIBERCOSOFT)
-- Twitter: [@twitterhandle](https://twitter.com/Gerfieldt)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/kolapo-akinrinlola-072097110)
+- GitHub: [@LIBERCOSOFT](https://github.com/LIBERCOSOFT)
+- Twitter: [@Gerfieldt](https://twitter.com/Gerfieldt)
+- LinkedIn: [Kolapo Akinrinlola](https://linkedin.com/in/kolapo-akinrinlola-072097110)
 
 ## 🤝 Contributing
 

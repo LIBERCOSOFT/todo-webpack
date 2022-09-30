@@ -1,3 +1,5 @@
+import ItemStatus from './taskstatus.js';
+
 export default class Action {
   static addItemToDom(book) {
     const itemsContainer = document.querySelector('#items__container');
@@ -8,6 +10,8 @@ export default class Action {
     descDiv.className = 'items__desc';
     const inputElement = document.createElement('input');
     inputElement.type = 'checkbox';
+    inputElement.id = `checkbox-${book.index}`;
+    inputElement.addEventListener('change', ItemStatus.handleCheckbox);
     const spanElement = document.createElement('span');
     spanElement.id = `desc-${book.index}`;
     spanElement.innerText = book.description;
