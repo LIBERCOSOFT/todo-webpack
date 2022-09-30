@@ -12,6 +12,11 @@
   display: none;
 }
 
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
 .space__between {
   display: flex;
   border-bottom: 0.15em solid #ccc;
