@@ -39,5 +39,8 @@ enterField.addEventListener('keydown', (event) => {
 clearAll.addEventListener('click', () => {
   const itemsContainer = document.querySelector('#items__container');
   itemsContainer.innerHTML = '';
-  localStorage.removeItem('allTodos');
+
+  const allTodos = JSON.parse(localStorage.getItem('allTodos'));
+  const filteredTodos = allTodos.filter(() => false);
+  localStorage.setItem('allTodos', JSON.stringify(filteredTodos));
 });

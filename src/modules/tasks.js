@@ -13,6 +13,10 @@ export default class Action {
     inputElement.id = `checkbox-${book.index}`;
     inputElement.addEventListener('change', ItemStatus.handleCheckbox);
     const spanElement = document.createElement('span');
+    if (book.completed) {
+      spanElement.classList = 'completed';
+      inputElement.checked = true;
+    }
     spanElement.id = `desc-${book.index}`;
     spanElement.innerText = book.description;
     spanElement.addEventListener('blur', this.handleBlur);
@@ -76,6 +80,14 @@ export default class Action {
     trashIndex.classList.toggle('hide');
     spanElement.setAttribute('contenteditable', false);
     parentElement.style.backgroundColor = '#fff';
+
+    const allTodos = JSON.parse(localStorage.getItem('allTodos'));
+    allTodos.forEach((todo) => {
+      if (Number(parentElement.id) === todo.index) {
+        if (todo.description !== e.target.innerText)todo.description = e.target.innerText;
+      }
+    });
+    localStorage.setItem('allTodos', JSON.stringify(allTodos));
   }
 
   static displaySavedItems() {
