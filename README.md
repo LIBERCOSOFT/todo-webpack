@@ -12,7 +12,7 @@
 
 ## Live Demo (if available)
 
-- Coming soon
+- <https://libercosoft.github.io/todo-webpack/dist/>
 
 ## Getting Started
 
