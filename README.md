@@ -37,13 +37,21 @@ To get a local copy up and running follow these simple example steps.
 
 - You can view the HTML document in your preferred or default browser.
 
-## Author
+## Author 1
 
 👤 **Kolapo Precious Akinrinlola**
 
 - GitHub: [@LIBERCOSOFT](https://github.com/LIBERCOSOFT)
 - Twitter: [@Gerfieldt](https://twitter.com/Gerfieldt)
 - LinkedIn: [Kolapo Akinrinlola](https://linkedin.com/in/kolapo-akinrinlola-072097110)
+
+## Author  2
+
+👤 ** Faranosh Amini **
+
+- GitHub: [@FaranoshAmini](https://github.com/FaranoshAmini)
+- LinkedIn: [@Faranosh_Amini](https://www.linkedin.com/in/faranosh-amini-9b925b23a/)
+- Twitter: [@Faranosh_Amini](https://twitter.com/Faranosh_Amini)
 
 ## 🤝 Contributing
 
