@@ -1,5 +1,5 @@
 import {
-  handleKebab, handleDelete, handleBlur, handleCheckbox,
+  handleKebab, handleDelete, handleBlur, handleCheckbox, handleEdit,
 } from './eventListeners.js';
 
 const addItemToDom = (item) => {
@@ -20,6 +20,7 @@ const addItemToDom = (item) => {
   }
   spanElement.id = `desc-${item.index}`;
   spanElement.innerText = item.description;
+  spanElement.addEventListener('input', handleEdit);
   spanElement.addEventListener('blur', handleBlur);
   descDiv.appendChild(inputElement);
   descDiv.appendChild(spanElement);

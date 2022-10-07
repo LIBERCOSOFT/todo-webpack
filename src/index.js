@@ -1,5 +1,6 @@
 import addItemToDom from './modules/addItemToDom.js';
 import displaySavedItems from './modules/displaySavedItems.js';
+import { deleteAllCompleted } from './modules/eventListeners.js';
 import './style.css';
 
 const enterInput = document.querySelector('#user__input__btn');
@@ -37,17 +38,4 @@ enterField.addEventListener('keydown', (event) => {
   }
 });
 
-clearAll.addEventListener('click', () => {
-  const completedItem = document.querySelectorAll('.completed');
-  completedItem.forEach((val) => val.parentElement.parentElement.remove());
-
-  const allTodos = JSON.parse(localStorage.getItem('allTodos'));
-  const filteredTodos = allTodos.filter((val) => val.completed === false);
-  filteredTodos.forEach((val, i) => {
-    val.index = i + 1;
-  });
-  if (filteredTodos.length > 0) {
-    window.location.reload();
-  }
-  localStorage.setItem('allTodos', JSON.stringify(filteredTodos));
-});
+clearAll.addEventListener('click', deleteAllCompleted);

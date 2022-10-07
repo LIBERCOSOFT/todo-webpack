@@ -19,8 +19,23 @@ const handleDelete = (e) => {
   const liElement = document.getElementById(`${id}`);
   liElement.remove();
 
-  window.location.reload();
   removeItemFromStorage(Number(id));
+};
+
+const handleEdit = (e) => {
+  const { parentElement } = e.target.parentElement;
+  const spanElement = document.querySelector(`#desc-${parentElement.id}`);
+  spanElement.innerText = e.target.innerText;
+
+  const allTodos = JSON.parse(localStorage.getItem('allTodos'));
+  if (allTodos) {
+    allTodos.forEach((todo) => {
+      if (Number(parentElement.id) === todo.index) {
+        if (todo.description !== e.target.innerText)todo.description = e.target.innerText;
+      }
+    });
+    localStorage.setItem('allTodos', JSON.stringify(allTodos));
+  }
 };
 
 const handleBlur = (e) => {
@@ -32,38 +47,45 @@ const handleBlur = (e) => {
   trashIndex.classList.toggle('hide');
   spanElement.setAttribute('contenteditable', false);
   parentElement.style.backgroundColor = '#fff';
-
-  const allTodos = JSON.parse(localStorage.getItem('allTodos'));
-  allTodos.forEach((todo) => {
-    if (Number(parentElement.id) === todo.index) {
-      if (todo.description !== e.target.innerText)todo.description = e.target.innerText;
-    }
-  });
-  localStorage.setItem('allTodos', JSON.stringify(allTodos));
 };
 
 const handleCheckbox = (e) => {
-  const { parentElement } = e.target;
-  const spanElement = parentElement.children[1];
+  const { id } = e.target.parentElement.parentElement;
+  const spanElement = document.querySelector(`#desc-${id}`);
   const allTodos = JSON.parse(localStorage.getItem('allTodos'));
-  const { id } = parentElement.parentElement;
+  spanElement.classList.toggle('completed');
 
   if (e.target.checked) {
-    spanElement.classList.add('completed');
-
+    if (allTodos) {
+      allTodos.forEach((todo) => {
+        if (Number(id) === todo.index) todo.completed = true;
+      });
+    }
+  } else if (allTodos) {
     allTodos.forEach((todo) => {
-      if (Number(id) === todo.index) { todo.completed = true; }
-    });
-  } else {
-    spanElement.classList.remove('completed');
-
-    allTodos.forEach((todo) => {
-      if (Number(id) === todo.index) { todo.completed = false; }
+      if (Number(id) === todo.index) todo.completed = false;
     });
   }
   localStorage.setItem('allTodos', JSON.stringify(allTodos));
 };
 
+const deleteAllCompleted = () => {
+  const completedItem = document.querySelectorAll('.completed');
+  completedItem.forEach((val) => val.parentElement.parentElement.remove());
+
+  const allTodos = JSON.parse(localStorage.getItem('allTodos'));
+  if (allTodos) {
+    const filteredTodos = allTodos.filter((val) => val.completed === false);
+    filteredTodos.forEach((val, i) => {
+      val.index = i + 1;
+    });
+    if (filteredTodos.length > 0) {
+      window.location.reload();
+    }
+    localStorage.setItem('allTodos', JSON.stringify(filteredTodos));
+  }
+};
+
 export {
-  handleBlur, handleDelete, handleKebab, handleCheckbox,
+  handleBlur, handleDelete, handleKebab, handleCheckbox, handleEdit, deleteAllCompleted,
 };

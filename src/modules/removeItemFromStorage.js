@@ -9,6 +9,7 @@ const removeItemFromStorage = (index) => {
       window.location.reload();
     }
     localStorage.setItem('allTodos', JSON.stringify(filteredTodos));
+    window.location.reload();
   }
 };
 
