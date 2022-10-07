@@ -1,12 +1,13 @@
-import Action from './modules/tasks.js';
+import addItemToDom from './modules/addItemToDom.js';
+import displaySavedItems from './modules/displaySavedItems.js';
 import './style.css';
-
-// Display list of todo items in localstorage
-Action.displaySavedItems();
 
 const enterInput = document.querySelector('#user__input__btn');
 const enterField = document.querySelector('#user__input__field');
 const clearAll = document.querySelector('#clear__all');
+
+// Display list of todo items in localstorage
+displaySavedItems();
 
 const addItemToDomOnEnter = () => {
   const inputField = document.querySelector('#user__input__field');
@@ -19,7 +20,7 @@ const addItemToDomOnEnter = () => {
       index: allTodos.length + 1,
     };
 
-    Action.addItemToDom(itemObj);
+    addItemToDom(itemObj);
     const updatedTodos = [...allTodos, itemObj];
     localStorage.setItem('allTodos', JSON.stringify(updatedTodos));
 
