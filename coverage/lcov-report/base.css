@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial';
+  font-family: 'Helvetica Neue',serif;
   font-size: 14px;
   color: #333;
 }
@@ -145,6 +145,11 @@ div.path a:visited {
   border-right: 1px solid #bbb;
 }
 
+.coverage-summary td,
+.coverage-summary th {
+  padding: 10px;
+}
+
 table.coverage {
   border-collapse: collapse;
   margin: 10px 0 0 0;
@@ -209,11 +214,6 @@ table.coverage td span.cline-any {
 
 .keyline-all {
   border: 1px solid #ddd;
-}
-
-.coverage-summary td,
-.coverage-summary th {
-  padding: 10px;
 }
 
 .coverage-summary tbody {
@@ -299,7 +299,6 @@ table.coverage td span.cline-any {
 /* medium red */
 .cstat-no,
 .fstat-no,
-.cbranch-no,
 .cbranch-no {
   background: #f6c6ce;
 }
