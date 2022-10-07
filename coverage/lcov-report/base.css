@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  font-family: Helvetica Neue, Helvetica, Arial;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial';
   font-size: 14px;
   color: #333;
 }
@@ -16,8 +16,8 @@ body {
 }
 
 *,
-*:after,
-*:before {
+*::after,
+*::before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -94,7 +94,7 @@ a:hover {
   display: block;
 }
 
-.clearfix:after {
+.clearfix::after {
   content: "";
   display: block;
   height: 0;
@@ -141,6 +141,10 @@ div.path a:visited {
   color: #333;
 }
 
+.coverage-summary td {
+  border-right: 1px solid #bbb;
+}
+
 table.coverage {
   border-collapse: collapse;
   margin: 10px 0 0 0;
@@ -169,6 +173,7 @@ table.coverage td span.cline-any {
   padding: 0 5px;
   width: 100%;
 }
+
 .missing-if-branch {
   display: inline-block;
   margin-right: 5px;
@@ -213,10 +218,6 @@ table.coverage td span.cline-any {
 
 .coverage-summary tbody {
   border: 1px solid #bbb;
-}
-
-.coverage-summary td {
-  border-right: 1px solid #bbb;
 }
 
 .coverage-summary td:last-child {
@@ -274,6 +275,12 @@ table.coverage td span.cline-any {
   color: #111;
 }
 
+.cover-fill,
+.cover-empty {
+  display: inline-block;
+  height: 12px;
+}
+
 /* dark red */
 .red.solid,
 .status-line.low,
@@ -281,15 +288,12 @@ table.coverage td span.cline-any {
   background: #c21f39;
 }
 
-.low .chart {
-  border: 1px solid #c21f39;
+.chart {
+  line-height: 0;
 }
 
-.highlighted,
-.highlighted .cstat-no,
-.highlighted .fstat-no,
-.highlighted .cbranch-no {
-  background: #c21f39 !important;
+.low .chart {
+  border: 1px solid #c21f39;
 }
 
 /* medium red */
@@ -298,6 +302,13 @@ table.coverage td span.cline-any {
 .cbranch-no,
 .cbranch-no {
   background: #f6c6ce;
+}
+
+.highlighted,
+.highlighted .cstat-no,
+.highlighted .fstat-no,
+.highlighted .cbranch-no {
+  background: #c21f39 !important;
 }
 
 /* light red */
@@ -346,10 +357,12 @@ table.coverage td span.cline-any {
   background: #ddd;
   color: #111;
 }
+
 .fstat-skip {
   background: #ddd;
   color: #111 !important;
 }
+
 .cbranch-skip {
   background: #ddd !important;
   color: #111;
@@ -367,16 +380,6 @@ span.cline-neutral {
   color: #888;
 }
 
-.cover-fill,
-.cover-empty {
-  display: inline-block;
-  height: 12px;
-}
-
-.chart {
-  line-height: 0;
-}
-
 .cover-empty {
   background: white;
 }
@@ -390,9 +393,11 @@ pre.prettyprint {
   padding: 0 !important;
   margin: 0 !important;
 }
+
 .com {
   color: #999 !important;
 }
+
 .ignore-none {
   color: #999;
   font-weight: normal;
